@@ -52,8 +52,21 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Text("Home Page", style: TextStyle(fontSize: 22)),
+    return Center(
+      child: Column(
+        children: [
+          Text("Home Page", style: TextStyle(fontSize: 22)),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const Settings()),
+              );
+            },
+            child: Text("Click Me"),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -71,6 +84,17 @@ class SearchPage extends StatelessWidget {
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Center(
+      child: Text("Profile Page", style: TextStyle(fontSize: 22)),
+    );
+  }
+}
+
+class Settings extends StatelessWidget {
+  const Settings({super.key});
 
   @override
   Widget build(BuildContext context) {
