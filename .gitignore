@@ -1,0 +1,37 @@
+# Ignore Flutter build and tool folders in ALL subdirectories
+**/.dart_tool/
+**/build/
+**/.pub/
+**/.packages
+
+# Android (all projects)
+**/android/.gradle/
+**/android/app/build/
+**/android/local.properties
+
+# iOS (all projects)
+**/ios/Pods/
+**/ios/.symlinks/
+**/ios/Flutter/Flutter.framework
+**/ios/Flutter/Flutter.podspec
+
+# macOS (all projects)
+**/macos/Pods/
+**/macos/.symlinks/
+**/macos/Flutter/ephemeral/
+
+# Windows & Linux (all projects)
+**/windows/flutter/ephemeral/
+**/linux/flutter/ephemeral/
+
+# Web
+**/web/.dart_tool/
+
+# IDE files (VS Code / IntelliJ)
+**/.vscode/
+**/.idea/
+**/*.iml
+
+# Logs, cache, OS files
+**/*.log
+**/.DS_Store
