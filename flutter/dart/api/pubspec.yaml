@@ -1,0 +1,6 @@
+name: my_dart_app
+environment:
+  sdk: '^3.9.0'  # Or whatever Dart version you're using
+
+dependencies:
+  http: ^1.6.0  # Update to the latest version compatible with Dart 3.x
