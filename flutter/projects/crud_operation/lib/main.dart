@@ -1,4 +1,5 @@
 
+import 'package:crud_operation/pages/addEmployee.dart';
 import 'package:crud_operation/service/employee.service.dart';
 import 'package:flutter/material.dart';
 
@@ -43,6 +44,11 @@ class _MyHomePage extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Employee List"),
+        actions: [
+          IconButton(onPressed: (){
+            // Navigator.push(context, MaterialPageRoute(builder: (context)=> Addemployee()));
+          }, icon: Icon(Icons.add),)
+        ],
         centerTitle: true,
       ),
       body: FutureBuilder(
@@ -60,7 +66,6 @@ class _MyHomePage extends State<MyHomePage> {
           }
 
           final employeeList = snapshot.data ?? [];
-
           if (employeeList.isEmpty) {
             return const Center(
               child: Text("No Employees Found"),
@@ -81,23 +86,38 @@ class _MyHomePage extends State<MyHomePage> {
                 return Card(
                   margin: const EdgeInsets.only(bottom: 12),
                   child: ListTile(
-                    leading: CircleAvatar(
-                      child: Text(emp.name[0].toUpperCase()),
-                    ),
+                   leading: CircleAvatar(
+  child: Text(
+    (emp.name.isNotEmpty ? emp.name[0] : "?").toUpperCase(),
+  ),
+),
                     title: Text(emp.name),
                     subtitle: Text(emp.email),
-                    trailing: _isDeleting
-                        ? const SizedBox(
-                            width: 20,
-                            height: 20,
-                            child: CircularProgressIndicator(strokeWidth: 2),
-                          )
-                        : IconButton(
-                            icon: const Icon(Icons.delete, color: Colors.red),
-                            onPressed: () {
-                              _deleteEmployee(emp.id);
-                            },
-                          ),
+                 trailing: SizedBox(
+  width: 100,
+  child: Row(
+    mainAxisAlignment: MainAxisAlignment.end,
+    children: [
+      IconButton(
+        icon: const Icon(Icons.edit, color: Colors.blue),
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => Addemployee(employee: emp),
+            ),
+          );
+        },
+      ),
+      IconButton(
+        icon: const Icon(Icons.delete, color: Colors.red),
+        onPressed: () {
+          _deleteEmployee(emp.id ?? "");
+        },
+      ),
+    ],
+  ),
+),
                   ),
                 );
               },
